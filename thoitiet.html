@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dự báo thời tiết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        input {
+            padding: 10px;
+            width: 65%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .weather {
+            margin-top: 20px;
+        }
+
+        .temp {
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌤️ Dự báo thời tiết</h1>
+
+    <div class="container">
+        <input type="text" id="city" placeholder="Nhập tên thành phố">
+        <button onclick="getWeather()">Xem</button>
+
+        <div class="weather" id="weatherResult"></div>
+    </div>
+
+<script>
+async function getWeather() {
+    const city = document.getElementById("city").value;
+
+    if (!city) {
+        alert("Vui lòng nhập tên thành phố!");
+        return;
+    }
+
+    try {
+        // Lấy tọa độ thành phố
+        const geoResponse = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=vi&format=json`
+        );
+        const geoData = await geoResponse.json();
+
+        if (!geoData.results) {
+            document.getElementById("weatherResult").innerHTML = "Không tìm thấy thành phố!";
+            return;
+        }
+
+        const { latitude, longitude, name, country } = geoData.results[0];
+
+        // Lấy dữ liệu thời tiết
+        const weatherResponse = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
+        );
+        const weatherData = await weatherResponse.json();
+
+        const temp = weatherData.current_weather.temperature;
+        const wind = weatherData.current_weather.windspeed;
+
+        document.getElementById("weatherResult").innerHTML = `
+            <h2>${name}, ${country}</h2>
+            <div class="temp">${temp}°C</div>
+            <p>💨 Gió: ${wind} km/h</p>
+        `;
+
+    } catch (error) {
+        document.getElementById("weatherResult").innerHTML = "Có lỗi xảy ra!";
+    }
+}
+</script>
+
+</body>
+</html>
