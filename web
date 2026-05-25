@@ -1,228 +1,529 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hệ Thống Quản Lý Ký Túc Xá</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<style>
-body{background-color:#F7F5F0;color:#4A4A4A;font-family:sans-serif;}
-.nav-tabs{border-bottom:2px solid #E8E2DA;}
-.nav-tabs .nav-link{color:#8E867E;font-weight:500;border:none;padding:12px 20px;}
-.nav-tabs .nav-link:hover{color:#6D5D51;background-color:#F0EDE8;border-radius:8px 8px 0 0;}
-.nav-tabs .nav-link.active{color:#6D5D51;font-weight:700;border:2px solid #E8E2DA;border-bottom-color:#FFFFFF;border-radius:8px 8px 0 0;background-color:#FFFFFF;}
-.tab-content{background-color:#FFFFFF !important;border:2px solid #E8E2DA;border-top:none;box-shadow:0 10px 25px rgba(0,0,0,0.02);border-radius:0 0 12px 12px;}
-.jumbotron{background-color:#8C7A6B;color:#FFFFFF;border-radius:12px;}
-.bg-primary{background-color:#8C7A6B !important;}
-.text-primary{color:#8C7A6B !important;}
-.border-primary{border-color:#8C7A6B !important;}
-.btn-primary{background-color:#8C7A6B;border-color:#8C7A6B;color:#fff;border-radius:8px;}
-.bg-success{background-color:#9CA986 !important;}
-.text-success{color:#7B8A62 !important;}
-.bg-warning{background-color:#D9C5A0 !important;}
-.text-warning{color:#A88F5B !important;}
-.bg-info{background-color:#9DB4C0 !important;}
-.text-info{color:#6A8799 !important;}
-.bg-secondary{background-color:#BDB5AD !important;}
-.text-secondary{color:#8E867E !important;}
-.bg-danger{background-color:#C88686 !important;}
-.text-danger{color:#B36A6A !important;}
-.btn-danger{background-color:#C88686;border-color:#C88686;color:#fff;border-radius:8px;}
-.alert-danger{background-color:#FAF4F4;border-color:#EACACA;color:#B36A6A;border-radius:10px;}
-.table{border-radius:10px;overflow:hidden;}
-.thead-dark th{background-color:#8C7A6B;border-color:#736457;color:white;}
-.table-striped tbody tr:nth-of-type(odd){background-color:#FAF9F7;}
-.card-header.bg-info,.card-header.bg-primary,.card-header.bg-success,.card-header.bg-secondary,.card-header.bg-danger{color:#FFFFFF !important;}
-.card-header.bg-warning{color:#5C4D32 !important;}
-.card{border-radius:12px;border-width:2px;}
-.form-control{background-color:#FCFBF9;border-color:#DFDCD7;border-radius:6px;}
-.money-input{font-weight:bold;color:#7B8A62;background-color:#FDFDFB;}
-</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ Thống Quản Lý Ký Túc Xá</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f7f5f0;
+        color: #4a4a4a;
+        font-family: sans-serif;
+      }
+      .nav-tabs {
+        border-bottom: 2px solid #e8e2da;
+      }
+      .nav-tabs .nav-link {
+        color: #8e867e;
+        font-weight: 500;
+        border: none;
+        padding: 12px 20px;
+      }
+      .nav-tabs .nav-link:hover {
+        color: #6d5d51;
+        background-color: #f0ede8;
+        border-radius: 8px 8px 0 0;
+      }
+      .nav-tabs .nav-link.active {
+        color: #6d5d51;
+        font-weight: 700;
+        border: 2px solid #e8e2da;
+        border-bottom-color: #ffffff;
+        border-radius: 8px 8px 0 0;
+        background-color: #ffffff;
+      }
+      .tab-content {
+        background-color: #ffffff !important;
+        border: 2px solid #e8e2da;
+        border-top: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+        border-radius: 0 0 12px 12px;
+      }
+      .jumbotron {
+        background-color: #8c7a6b;
+        color: #ffffff;
+        border-radius: 12px;
+      }
+      .bg-primary {
+        background-color: #8c7a6b !important;
+      }
+      .text-primary {
+        color: #8c7a6b !important;
+      }
+      .border-primary {
+        border-color: #8c7a6b !important;
+      }
+      .btn-primary {
+        background-color: #8c7a6b;
+        border-color: #8c7a6b;
+        color: #fff;
+        border-radius: 8px;
+      }
+      .bg-success {
+        background-color: #9ca986 !important;
+      }
+      .text-success {
+        color: #7b8a62 !important;
+      }
+      .bg-warning {
+        background-color: #d9c5a0 !important;
+      }
+      .text-warning {
+        color: #a88f5b !important;
+      }
+      .bg-info {
+        background-color: #9db4c0 !important;
+      }
+      .text-info {
+        color: #6a8799 !important;
+      }
+      .bg-secondary {
+        background-color: #bdb5ad !important;
+      }
+      .text-secondary {
+        color: #8e867e !important;
+      }
+      .bg-danger {
+        background-color: #c88686 !important;
+      }
+      .text-danger {
+        color: #b36a6a !important;
+      }
+      .btn-danger {
+        background-color: #c88686;
+        border-color: #c88686;
+        color: #fff;
+        border-radius: 8px;
+      }
+      .alert-danger {
+        background-color: #faf4f4;
+        border-color: #eacaca;
+        color: #b36a6a;
+        border-radius: 10px;
+      }
+      .table {
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .thead-dark th {
+        background-color: #8c7a6b;
+        border-color: #736457;
+        color: white;
+      }
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #faf9f7;
+      }
+      .card-header.bg-info,
+      .card-header.bg-primary,
+      .card-header.bg-success,
+      .card-header.bg-secondary,
+      .card-header.bg-danger {
+        color: #ffffff !important;
+      }
+      .card-header.bg-warning {
+        color: #5c4d32 !important;
+      }
+      .card {
+        border-radius: 12px;
+        border-width: 2px;
+      }
+      .form-control {
+        background-color: #fcfbf9;
+        border-color: #dfdcd7;
+        border-radius: 6px;
+      }
+      .money-input {
+        font-weight: bold;
+        color: #7b8a62;
+        background-color: #fdfdfb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4 mb-5">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-toggle="tab"
+            href="#home"
+            role="tab"
+            >1. Trang Chủ</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="manage-tab"
+            data-toggle="tab"
+            href="#manage"
+            role="tab"
+            >2. Trang Quản Lý</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="debug-tab"
+            data-toggle="tab"
+            href="#debug"
+            role="tab"
+            >3. Trang Debug</a
+          >
+        </li>
+      </ul>
 
-<div class="container mt-4 mb-5">
-  <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-    <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab">1. Trang Chủ</a></li>
-    <li class="nav-item"><a class="nav-link" id="manage-tab" data-toggle="tab" href="#manage" role="tab">2. Trang Quản Lý</a></li>
-    <li class="nav-item"><a class="nav-link" id="debug-tab" data-toggle="tab" href="#debug" role="tab">3. Trang Debug</a></li>
-  </ul>
+      <div class="tab-content p-4" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel">
+          <div class="jumbotron text-center border-0">
+            <h1 class="display-4">Chào Mừng Các Thành Viên Phòng Ký Túc Xá!</h1>
+            <p class="lead mt-3">
+              Hệ thống quản lý chi phí và cập nhật thông tin phòng trọ nội bộ.
+            </p>
+          </div>
 
-  <div class="tab-content p-4" id="myTabContent">
-    
-    <div class="tab-pane fade show active" id="home" role="tabpanel">
-      <div class="jumbotron text-center border-0">
-        <h1 class="display-4">Chào Mừng Các Thành Viên Phòng Ký Túc Xá!</h1>
-        <p class="lead mt-3">Hệ thống quản lý chi phí và cập nhật thông tin phòng trọ nội bộ.</p>
-      </div>
+          <div class="alert alert-secondary text-center font-italic mb-4">
+            [Khu vực dành cho Ảnh chụp tập thể các thành viên]
+          </div>
 
-      <div class="alert alert-secondary text-center font-italic mb-4">
-        [Khu vực dành cho Ảnh chụp tập thể các thành viên]
-      </div>
-
-      <h4 class="mb-3 text-secondary border-left border-secondary pl-3 font-weight-bold">Thành Viên Trong Phòng</h4>
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="card shadow-sm h-100 border-primary">
-            <div class="card-body text-center">
-              <h5 class="card-title font-weight-bold text-primary">Hoàng Xuân Nam</h5>
-              <p class="card-text text-muted mb-2">MSSV: 254D4800310</p>
-              <span class="badge badge-primary px-3 py-1">Thành viên 1</span>
+          <h4
+            class="mb-3 text-secondary border-left border-secondary pl-3 font-weight-bold"
+          >
+            Thành Viên Trong Phòng
+          </h4>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <div class="card shadow-sm h-100 border-primary">
+                <div class="card-body text-center">
+                  <h5 class="card-title font-weight-bold text-primary">
+                    Hoàng Xuân Nam
+                  </h5>
+                  <p class="card-text text-muted mb-2">MSSV: 254D4800310</p>
+                  <span class="badge badge-primary px-3 py-1"
+                    >Thành viên 1</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card shadow-sm h-100 border-success">
+                <div class="card-body text-center">
+                  <h5 class="card-title font-weight-bold text-success">
+                    Nguyễn Nhật Long
+                  </h5>
+                  <p class="card-text text-muted mb-2">MSSV: 254D4800267</p>
+                  <span class="badge badge-success px-3 py-1"
+                    >Thành viên 2</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card shadow-sm h-100 border-warning">
+                <div class="card-body text-center">
+                  <h5 class="card-title font-weight-bold text-warning">
+                    Vũ Quang Nam
+                  </h5>
+                  <p class="card-text text-muted mb-2">MSSV: 254D4800340</p>
+                  <span class="badge badge-warning px-3 py-1"
+                    >Thành viên 3</span
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <div class="card shadow-sm h-100 border-success">
-            <div class="card-body text-center">
-              <h5 class="card-title font-weight-bold text-success">Nguyễn Nhật Long</h5>
-              <p class="card-text text-muted mb-2">MSSV: 254D4800267</p>
-              <span class="badge badge-success px-3 py-1">Thành viên 2</span>
+
+        <div class="tab-pane fade" id="manage" role="tabpanel">
+          <h3 class="mb-4 text-primary font-weight-bold">
+            Quản Lý Hóa Đơn Chi Phí Phòng
+          </h3>
+
+          <form
+            id="billForm"
+            class="bg-light p-4 rounded border mb-4 shadow-sm"
+            style="background-color: #faf9f7 !important"
+          >
+            <h5
+              class="text-secondary border-bottom border-secondary pb-2 mb-3 font-weight-bold"
+            >
+              1. Thông tin người nộp:
+            </h5>
+            <div class="row mb-3">
+              <div class="form-group col-md-4">
+                <label
+                  for="nguoiThanhToan"
+                  class="font-weight-bold text-secondary"
+                  >Người thanh toán:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nguoiThanhToan"
+                  placeholder="Họ tên người trả"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label
+                  for="ngayThanhToan"
+                  class="font-weight-bold text-secondary"
+                  >Ngày thanh toán:</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="ngayThanhToan"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="mssvBill" class="font-weight-bold text-secondary"
+                  >Mã số sinh viên (Định danh):</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="mssvBill"
+                  placeholder="Nhập mssv"
+                  required
+                />
+              </div>
+            </div>
+
+            <h5
+              class="text-secondary border-bottom border-secondary pb-2 mb-3 mt-4 font-weight-bold"
+            >
+              2. Kê khai số tiền nộp (VNĐ):
+            </h5>
+            <p class="text-muted small">
+              <em>* Khoản nào không nộp thì để trống hoặc ghi số 0.</em>
+            </p>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class="text-info font-weight-bold">Tiền Phòng:</label>
+                <input
+                  type="number"
+                  class="form-control money-input"
+                  id="inpPhong"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label class="text-warning font-weight-bold">Tiền Điện:</label>
+                <input
+                  type="number"
+                  class="form-control money-input"
+                  id="inpDien"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label class="text-primary font-weight-bold">Tiền Nước:</label>
+                <input
+                  type="number"
+                  class="form-control money-input"
+                  id="inpNuoc"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="text-success font-weight-bold"
+                  >Tiền Dịch Vụ (Mạng, Rác...):</label
+                >
+                <input
+                  type="number"
+                  class="form-control money-input"
+                  id="inpDichVu"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label class="text-secondary font-weight-bold"
+                  >Chi Phí Khác (Quỹ chung...):</label
+                >
+                <input
+                  type="number"
+                  class="form-control money-input"
+                  id="inpKhac"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-block font-weight-bold mt-4 py-2"
+            >
+              GHI NHẬN PHIẾU THU
+            </button>
+          </form>
+
+          <h4
+            class="mb-3 text-secondary border-left border-secondary pl-3 font-weight-bold"
+          >
+            Thống Kê Từng Khoản Chi Phí
+          </h4>
+          <div class="row mb-4">
+            <div class="col-md mb-2">
+              <div class="card border-info text-center h-100 shadow-sm">
+                <div class="card-header bg-info p-2 font-weight-bold">
+                  Tiền Phòng
+                </div>
+                <div class="card-body p-2">
+                  <h5 class="m-0 text-info font-weight-bold" id="tkPhong">
+                    0 đ
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md mb-2">
+              <div class="card border-warning text-center h-100 shadow-sm">
+                <div class="card-header bg-warning p-2 font-weight-bold">
+                  Tiền Điện
+                </div>
+                <div class="card-body p-2">
+                  <h5 class="m-0 text-warning font-weight-bold" id="tkDien">
+                    250,000 đ
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md mb-2">
+              <div class="card border-primary text-center h-100 shadow-sm">
+                <div class="card-header bg-primary p-2 font-weight-bold">
+                  Tiền Nước
+                </div>
+                <div class="card-body p-2">
+                  <h5 class="m-0 text-primary font-weight-bold" id="tkNuoc">
+                    180,000 đ
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md mb-2">
+              <div class="card border-success text-center h-100 shadow-sm">
+                <div class="card-header bg-success p-2 font-weight-bold">
+                  Tiền Dịch Vụ
+                </div>
+                <div class="card-body p-2">
+                  <h5 class="m-0 text-success font-weight-bold" id="tkDichVu">
+                    0 đ
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md mb-2">
+              <div class="card border-secondary text-center h-100 shadow-sm">
+                <div class="card-header bg-secondary p-2 font-weight-bold">
+                  Chi Phí Khác
+                </div>
+                <div class="card-body p-2">
+                  <h5 class="m-0 text-secondary font-weight-bold" id="tkKhac">
+                    0 đ
+                  </h5>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div
+            class="alert alert-danger d-flex justify-content-between align-items-center shadow-sm py-3"
+          >
+            <h5 class="m-0 font-weight-bold">
+              TỔNG CỘNG TẤT CẢ CHI TIÊU HIỆN TẠI:
+            </h5>
+            <h3 class="m-0 font-weight-bold text-danger" id="tongTienDisplay">
+              430,000 đ
+            </h3>
+          </div>
+
+          <div
+            class="d-flex justify-content-between align-items-center mt-5 mb-3"
+          >
+            <h4
+              class="m-0 text-secondary border-left border-secondary pl-3 font-weight-bold"
+            >
+              Lịch Sử Nộp Tiền Chi Tiết
+            </h4>
+            <button
+              type="button"
+              class="btn btn-danger font-weight-bold shadow-sm"
+              onclick="xoaDuLieu()"
+            >
+              🔄 CHỐT SỔ & LÀM MỚI
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table
+              class="table table-striped table-bordered text-center shadow-sm"
+            >
+              <thead class="thead-dark">
+                <tr>
+                  <th>Nội dung chi phí</th>
+                  <th>Số tiền nộp</th>
+                  <th>Người thanh toán</th>
+                  <th>Ngày</th>
+                  <th>MSSV người nộp</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <tr>
+                  <td class="font-weight-bold text-warning">Tiền điện</td>
+                  <td class="text-success font-weight-bold">250,000 đ</td>
+                  <td>Nguyễn Nhật Long</td>
+                  <td>2026-05-15</td>
+                  <td>
+                    <span class="badge badge-secondary px-2 py-1"
+                      >254D4800267</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold text-primary">Tiền nước</td>
+                  <td class="text-success font-weight-bold">180,000 đ</td>
+                  <td>Vũ Quang Nam</td>
+                  <td>2026-05-16</td>
+                  <td>
+                    <span class="badge badge-secondary px-2 py-1"
+                      >254D4800340</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="col-md-4 mb-3">
-          <div class="card shadow-sm h-100 border-warning">
-            <div class="card-body text-center">
-              <h5 class="card-title font-weight-bold text-warning">Vũ Quang Nam</h5>
-              <p class="card-text text-muted mb-2">MSSV: 254D4800340</p>
-              <span class="badge badge-warning px-3 py-1">Thành viên 3</span>
+
+        <div class="tab-pane fade" id="debug" role="tabpanel">
+          <h3 class="mb-4 text-danger font-weight-bold">
+            Hệ Thống Sửa Lỗi (Debug)
+          </h3>
+
+          <div class="card mb-4 border-success shadow-sm">
+            <div class="card-header bg-success p-3 font-weight-bold">
+              Đoạn mã đã sửa hoàn chỉnh (JS Đồng hồ)
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-pane fade" id="manage" role="tabpanel">
-      <h3 class="mb-4 text-primary font-weight-bold">Quản Lý Hóa Đơn Chi Phí Phòng</h3>
-      
-      <form id="billForm" class="bg-light p-4 rounded border mb-4 shadow-sm" style="background-color: #FAF9F7 !important;">
-        <h5 class="text-secondary border-bottom border-secondary pb-2 mb-3 font-weight-bold">1. Thông tin người nộp:</h5>
-        <div class="row mb-3">
-          <div class="form-group col-md-4">
-            <label for="nguoiThanhToan" class="font-weight-bold text-secondary">Người thanh toán:</label>
-            <input type="text" class="form-control" id="nguoiThanhToan" placeholder="Họ tên người trả" required>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="ngayThanhToan" class="font-weight-bold text-secondary">Ngày thanh toán:</label>
-            <input type="date" class="form-control" id="ngayThanhToan" required>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="mssvBill" class="font-weight-bold text-secondary">Mã số sinh viên (Định danh):</label>
-            <input type="text" class="form-control" id="mssvBill" placeholder="Nhập mssv" required>
-          </div>
-        </div>
-
-        <h5 class="text-secondary border-bottom border-secondary pb-2 mb-3 mt-4 font-weight-bold">2. Kê khai số tiền nộp (VNĐ):</h5>
-        <p class="text-muted small"><em>* Khoản nào không nộp thì để trống hoặc ghi số 0.</em></p>
-        <div class="row">
-          <div class="form-group col-md-4">
-            <label class="text-info font-weight-bold">Tiền Phòng:</label>
-            <input type="number" class="form-control money-input" id="inpPhong" placeholder="0" min="0">
-          </div>
-          <div class="form-group col-md-4">
-            <label class="text-warning font-weight-bold">Tiền Điện:</label>
-            <input type="number" class="form-control money-input" id="inpDien" placeholder="0" min="0">
-          </div>
-          <div class="form-group col-md-4">
-            <label class="text-primary font-weight-bold">Tiền Nước:</label>
-            <input type="number" class="form-control money-input" id="inpNuoc" placeholder="0" min="0">
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <label class="text-success font-weight-bold">Tiền Dịch Vụ (Mạng, Rác...):</label>
-            <input type="number" class="form-control money-input" id="inpDichVu" placeholder="0" min="0">
-          </div>
-          <div class="form-group col-md-6">
-            <label class="text-secondary font-weight-bold">Chi Phí Khác (Quỹ chung...):</label>
-            <input type="number" class="form-control money-input" id="inpKhac" placeholder="0" min="0">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block font-weight-bold mt-4 py-2">GHI NHẬN PHIẾU THU</button>
-      </form>
-
-      <h4 class="mb-3 text-secondary border-left border-secondary pl-3 font-weight-bold">Thống Kê Từng Khoản Chi Phí</h4>
-      <div class="row mb-4">
-        <div class="col-md mb-2">
-          <div class="card border-info text-center h-100 shadow-sm">
-            <div class="card-header bg-info p-2 font-weight-bold">Tiền Phòng</div>
-            <div class="card-body p-2"><h5 class="m-0 text-info font-weight-bold" id="tkPhong">0 đ</h5></div>
-          </div>
-        </div>
-        <div class="col-md mb-2">
-          <div class="card border-warning text-center h-100 shadow-sm">
-            <div class="card-header bg-warning p-2 font-weight-bold">Tiền Điện</div>
-            <div class="card-body p-2"><h5 class="m-0 text-warning font-weight-bold" id="tkDien">250,000 đ</h5></div>
-          </div>
-        </div>
-        <div class="col-md mb-2">
-          <div class="card border-primary text-center h-100 shadow-sm">
-            <div class="card-header bg-primary p-2 font-weight-bold">Tiền Nước</div>
-            <div class="card-body p-2"><h5 class="m-0 text-primary font-weight-bold" id="tkNuoc">180,000 đ</h5></div>
-          </div>
-        </div>
-        <div class="col-md mb-2">
-          <div class="card border-success text-center h-100 shadow-sm">
-            <div class="card-header bg-success p-2 font-weight-bold">Tiền Dịch Vụ</div>
-            <div class="card-body p-2"><h5 class="m-0 text-success font-weight-bold" id="tkDichVu">0 đ</h5></div>
-          </div>
-        </div>
-        <div class="col-md mb-2">
-          <div class="card border-secondary text-center h-100 shadow-sm">
-            <div class="card-header bg-secondary p-2 font-weight-bold">Chi Phí Khác</div>
-            <div class="card-body p-2"><h5 class="m-0 text-secondary font-weight-bold" id="tkKhac">0 đ</h5></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="alert alert-danger d-flex justify-content-between align-items-center shadow-sm py-3">
-        <h5 class="m-0 font-weight-bold">TỔNG CỘNG TẤT CẢ CHI TIÊU HIỆN TẠI:</h5>
-        <h3 class="m-0 font-weight-bold text-danger" id="tongTienDisplay">430,000 đ</h3>
-      </div>
-
-      <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
-        <h4 class="m-0 text-secondary border-left border-secondary pl-3 font-weight-bold">Lịch Sử Nộp Tiền Chi Tiết</h4>
-        <button type="button" class="btn btn-danger font-weight-bold shadow-sm" onclick="xoaDuLieu()">🔄 CHỐT SỔ & LÀM MỚI</button>
-      </div>
-      
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered text-center shadow-sm">
-          <thead class="thead-dark">
-            <tr>
-              <th>Nội dung chi phí</th>
-              <th>Số tiền nộp</th>
-              <th>Người thanh toán</th>
-              <th>Ngày</th>
-              <th>MSSV người nộp</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <tr>
-              <td class="font-weight-bold text-warning">Tiền điện</td>
-              <td class="text-success font-weight-bold">250,000 đ</td>
-              <td>Nguyễn Nhật Long</td>
-              <td>2026-05-15</td>
-              <td><span class="badge badge-secondary px-2 py-1">254D4800267</span></td>
-            </tr>
-            <tr>
-              <td class="font-weight-bold text-primary">Tiền nước</td>
-              <td class="text-success font-weight-bold">180,000 đ</td>
-              <td>Vũ Quang Nam</td>
-              <td>2026-05-16</td>
-              <td><span class="badge badge-secondary px-2 py-1">254D4800340</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="tab-pane fade" id="debug" role="tabpanel">
-      <h3 class="mb-4 text-danger font-weight-bold">Hệ Thống Sửa Lỗi (Debug)</h3>
-      
-      <div class="card mb-4 border-success shadow-sm">
-        <div class="card-header bg-success p-3 font-weight-bold">Đoạn mã đã sửa hoàn chỉnh (JS Đồng hồ)</div>
-        <div class="card-body bg-light" style="background-color: #FAF9F7 !important;">
-          <pre class="text-success font-weight-bold m-0" style="font-size: 14px;">
+            <div
+              class="card-body bg-light"
+              style="background-color: #faf9f7 !important"
+            >
+              <pre
+                class="text-success font-weight-bold m-0"
+                style="font-size: 14px"
+              >
 let timeLeft = 60;
 let timerId;
 
@@ -237,185 +538,288 @@ function startTimer() {
       clearInterval(timerId);
     }
   }, 1000); 
-}</pre>
-        </div>
-      </div>
-
-      <div class="card mt-4 shadow-sm border-secondary">
-        <div class="card-header bg-secondary p-3 font-weight-bold">Chạy thử nghiệm giao diện</div>
-        <div class="card-body text-center bg-light" style="background-color: #FAF9F7 !important;">
-          <div class="input-group justify-content-center">
-            <div class="input-group-prepend">
-              <span class="input-group-text font-weight-bold text-secondary border-secondary bg-white">Thời gian còn lại (giây):</span>
+}</pre
+              >
             </div>
-            <input type="text" id="timer" value="60" class="form-control text-center font-weight-bold border-secondary text-primary" style="width: 80px; font-size: 20px; flex: none;" readonly>
-            <div class="input-group-append">
-              <button type="button" class="btn btn-primary font-weight-bold px-4" onclick="startTimer()">BẮT ĐẦU ĐẾM</button>
+          </div>
+
+          <div class="card mt-4 shadow-sm border-secondary">
+            <div class="card-header bg-secondary p-3 font-weight-bold">
+              Chạy thử nghiệm giao diện
+            </div>
+            <div
+              class="card-body text-center bg-light"
+              style="background-color: #faf9f7 !important"
+            >
+              <div class="input-group justify-content-center">
+                <div class="input-group-prepend">
+                  <span
+                    class="input-group-text font-weight-bold text-secondary border-secondary bg-white"
+                    >Thời gian còn lại (giây):</span
+                  >
+                </div>
+                <input
+                  type="text"
+                  id="timer"
+                  value="60"
+                  class="form-control text-center font-weight-bold border-secondary text-primary"
+                  style="width: 80px; font-size: 20px; flex: none"
+                  readonly
+                />
+                <div class="input-group-append">
+                  <button
+                    type="button"
+                    class="btn btn-primary font-weight-bold px-4"
+                    onclick="startTimer()"
+                  >
+                    BẮT ĐẦU ĐẾM
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-  var qTienPhong = 0;
-  var qTienDien = 250000;
-  var qTienNuoc = 180000;
-  var qTienDichVu = 0;
-  var qChiPhiKhac = 0;
-  var tongTien = qTienPhong + qTienDien + qTienNuoc + qTienDichVu + qChiPhiKhac;
+    <script>
+      var qTienPhong = 0;
+      var qTienDien = 250000;
+      var qTienNuoc = 180000;
+      var qTienDichVu = 0;
+      var qChiPhiKhac = 0;
+      var tongTien =
+        qTienPhong + qTienDien + qTienNuoc + qTienDichVu + qChiPhiKhac;
 
-  document.getElementById('billForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+      document
+        .getElementById("billForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
 
-    var nguoiThanhToan = document.getElementById('nguoiThanhToan').value;
-    var ngayThanhToan = document.getElementById('ngayThanhToan').value;
-    var mssvBill = document.getElementById('mssvBill').value;
+          var nguoiThanhToan = document.getElementById("nguoiThanhToan").value;
+          var ngayThanhToan = document.getElementById("ngayThanhToan").value;
+          var mssvBill = document.getElementById("mssvBill").value;
 
-    var tPhong = document.getElementById('inpPhong').value;
-    if(tPhong == "") tPhong = 0; else tPhong = parseFloat(tPhong);
-    
-    var tDien = document.getElementById('inpDien').value;
-    if(tDien == "") tDien = 0; else tDien = parseFloat(tDien);
+          var tPhong = document.getElementById("inpPhong").value;
+          if (tPhong == "") tPhong = 0;
+          else tPhong = parseFloat(tPhong);
 
-    var tNuoc = document.getElementById('inpNuoc').value;
-    if(tNuoc == "") tNuoc = 0; else tNuoc = parseFloat(tNuoc);
+          var tDien = document.getElementById("inpDien").value;
+          if (tDien == "") tDien = 0;
+          else tDien = parseFloat(tDien);
 
-    var tDichVu = document.getElementById('inpDichVu').value;
-    if(tDichVu == "") tDichVu = 0; else tDichVu = parseFloat(tDichVu);
+          var tNuoc = document.getElementById("inpNuoc").value;
+          if (tNuoc == "") tNuoc = 0;
+          else tNuoc = parseFloat(tNuoc);
 
-    var tKhac = document.getElementById('inpKhac').value;
-    if(tKhac == "") tKhac = 0; else tKhac = parseFloat(tKhac);
+          var tDichVu = document.getElementById("inpDichVu").value;
+          if (tDichVu == "") tDichVu = 0;
+          else tDichVu = parseFloat(tDichVu);
 
-    if (tPhong + tDien + tNuoc + tDichVu + tKhac == 0) {
-      alert("Bố Nam chưa nhập số tiền vào bất kỳ quỹ nào ạ!");
-      return;
-    }
+          var tKhac = document.getElementById("inpKhac").value;
+          if (tKhac == "") tKhac = 0;
+          else tKhac = parseFloat(tKhac);
 
-    var bdy = document.getElementById('tableBody');
-    var cuoiMssv = parseInt(mssvBill.slice(-1));
-    if(isNaN(cuoiMssv)) cuoiMssv = 0;
+          if (tPhong + tDien + tNuoc + tDichVu + tKhac == 0) {
+            alert("Bố Nam chưa nhập số tiền vào bất kỳ quỹ nào ạ!");
+            return;
+          }
 
-    if (tPhong > 0) {
-      qTienPhong = qTienPhong + tPhong;
-      document.getElementById('tkPhong').innerText = qTienPhong.toLocaleString() + " đ";
-      tongTien = tongTien + tPhong;
-      
-      var tr1 = document.createElement('tr');
-      tr1.innerHTML = "<td class='font-weight-bold text-info'>Tiền phòng</td>" +
-                      "<td class='text-success font-weight-bold'>" + tPhong.toLocaleString() + " đ</td>" +
-                      "<td>" + nguoiThanhToan + "</td>" +
-                      "<td>" + ngayThanhToan + "</td>" +
-                      "<td><span class='badge badge-secondary px-2 py-1'>" + mssvBill + "</span></td>";
-      if (cuoiMssv % 2 !== 0) { bdy.prepend(tr1); } else { bdy.append(tr1); }
-    }
+          var bdy = document.getElementById("tableBody");
+          var cuoiMssv = parseInt(mssvBill.slice(-1));
+          if (isNaN(cuoiMssv)) cuoiMssv = 0;
 
-    if (tDien > 0) {
-      qTienDien = qTienDien + tDien;
-      document.getElementById('tkDien').innerText = qTienDien.toLocaleString() + " đ";
-      tongTien = tongTien + tDien;
-      
-      var tr2 = document.createElement('tr');
-      tr2.innerHTML = "<td class='font-weight-bold text-warning'>Tiền điện</td>" +
-                      "<td class='text-success font-weight-bold'>" + tDien.toLocaleString() + " đ</td>" +
-                      "<td>" + nguoiThanhToan + "</td>" +
-                      "<td>" + ngayThanhToan + "</td>" +
-                      "<td><span class='badge badge-secondary px-2 py-1'>" + mssvBill + "</span></td>";
-      if (cuoiMssv % 2 !== 0) { bdy.prepend(tr2); } else { bdy.append(tr2); }
-    }
+          if (tPhong > 0) {
+            qTienPhong = qTienPhong + tPhong;
+            document.getElementById("tkPhong").innerText =
+              qTienPhong.toLocaleString() + " đ";
+            tongTien = tongTien + tPhong;
 
-    if (tNuoc > 0) {
-      qTienNuoc = qTienNuoc + tNuoc;
-      document.getElementById('tkNuoc').innerText = qTienNuoc.toLocaleString() + " đ";
-      tongTien = tongTien + tNuoc;
-      
-      var tr3 = document.createElement('tr');
-      tr3.innerHTML = "<td class='font-weight-bold text-primary'>Tiền nước</td>" +
-                      "<td class='text-success font-weight-bold'>" + tNuoc.toLocaleString() + " đ</td>" +
-                      "<td>" + nguoiThanhToan + "</td>" +
-                      "<td>" + ngayThanhToan + "</td>" +
-                      "<td><span class='badge badge-secondary px-2 py-1'>" + mssvBill + "</span></td>";
-      if (cuoiMssv % 2 !== 0) { bdy.prepend(tr3); } else { bdy.append(tr3); }
-    }
+            var tr1 = document.createElement("tr");
+            tr1.innerHTML =
+              "<td class='font-weight-bold text-info'>Tiền phòng</td>" +
+              "<td class='text-success font-weight-bold'>" +
+              tPhong.toLocaleString() +
+              " đ</td>" +
+              "<td>" +
+              nguoiThanhToan +
+              "</td>" +
+              "<td>" +
+              ngayThanhToan +
+              "</td>" +
+              "<td><span class='badge badge-secondary px-2 py-1'>" +
+              mssvBill +
+              "</span></td>";
+            if (cuoiMssv % 2 !== 0) {
+              bdy.prepend(tr1);
+            } else {
+              bdy.append(tr1);
+            }
+          }
 
-    if (tDichVu > 0) {
-      qTienDichVu = qTienDichVu + tDichVu;
-      document.getElementById('tkDichVu').innerText = qTienDichVu.toLocaleString() + " đ";
-      tongTien = tongTien + tDichVu;
-      
-      var tr4 = document.createElement('tr');
-      tr4.innerHTML = "<td class='font-weight-bold text-success'>Tiền dịch vụ</td>" +
-                      "<td class='text-success font-weight-bold'>" + tDichVu.toLocaleString() + " đ</td>" +
-                      "<td>" + nguoiThanhToan + "</td>" +
-                      "<td>" + ngayThanhToan + "</td>" +
-                      "<td><span class='badge badge-secondary px-2 py-1'>" + mssvBill + "</span></td>";
-      if (cuoiMssv % 2 !== 0) { bdy.prepend(tr4); } else { bdy.append(tr4); }
-    }
+          if (tDien > 0) {
+            qTienDien = qTienDien + tDien;
+            document.getElementById("tkDien").innerText =
+              qTienDien.toLocaleString() + " đ";
+            tongTien = tongTien + tDien;
 
-    if (tKhac > 0) {
-      qChiPhiKhac = qChiPhiKhac + tKhac;
-      document.getElementById('tkKhac').innerText = qChiPhiKhac.toLocaleString() + " đ";
-      tongTien = tongTien + tKhac;
-      
-      var tr5 = document.createElement('tr');
-      tr5.innerHTML = "<td class='font-weight-bold text-secondary'>Chi phí khác</td>" +
-                      "<td class='text-success font-weight-bold'>" + tKhac.toLocaleString() + " đ</td>" +
-                      "<td>" + nguoiThanhToan + "</td>" +
-                      "<td>" + ngayThanhToan + "</td>" +
-                      "<td><span class='badge badge-secondary px-2 py-1'>" + mssvBill + "</span></td>";
-      if (cuoiMssv % 2 !== 0) { bdy.prepend(tr5); } else { bdy.append(tr5); }
-    }
+            var tr2 = document.createElement("tr");
+            tr2.innerHTML =
+              "<td class='font-weight-bold text-warning'>Tiền điện</td>" +
+              "<td class='text-success font-weight-bold'>" +
+              tDien.toLocaleString() +
+              " đ</td>" +
+              "<td>" +
+              nguoiThanhToan +
+              "</td>" +
+              "<td>" +
+              ngayThanhToan +
+              "</td>" +
+              "<td><span class='badge badge-secondary px-2 py-1'>" +
+              mssvBill +
+              "</span></td>";
+            if (cuoiMssv % 2 !== 0) {
+              bdy.prepend(tr2);
+            } else {
+              bdy.append(tr2);
+            }
+          }
 
-    document.getElementById('tongTienDisplay').innerText = tongTien.toLocaleString() + " đ";
+          if (tNuoc > 0) {
+            qTienNuoc = qTienNuoc + tNuoc;
+            document.getElementById("tkNuoc").innerText =
+              qTienNuoc.toLocaleString() + " đ";
+            tongTien = tongTien + tNuoc;
 
-    if (tongTien > 1500000) {
-      alert("Cảnh báo: Quỹ phòng đã vượt định mức 1.5 triệu đồng!");
-    }
+            var tr3 = document.createElement("tr");
+            tr3.innerHTML =
+              "<td class='font-weight-bold text-primary'>Tiền nước</td>" +
+              "<td class='text-success font-weight-bold'>" +
+              tNuoc.toLocaleString() +
+              " đ</td>" +
+              "<td>" +
+              nguoiThanhToan +
+              "</td>" +
+              "<td>" +
+              ngayThanhToan +
+              "</td>" +
+              "<td><span class='badge badge-secondary px-2 py-1'>" +
+              mssvBill +
+              "</span></td>";
+            if (cuoiMssv % 2 !== 0) {
+              bdy.prepend(tr3);
+            } else {
+              bdy.append(tr3);
+            }
+          }
 
-    document.getElementById('billForm').reset();
-  });
+          if (tDichVu > 0) {
+            qTienDichVu = qTienDichVu + tDichVu;
+            document.getElementById("tkDichVu").innerText =
+              qTienDichVu.toLocaleString() + " đ";
+            tongTien = tongTien + tDichVu;
 
-  function xoaDuLieu() {
-    var x = confirm("Bố Nam có chắc chắn muốn chốt sổ tháng này và xóa sạch toàn bộ lịch sử thu tiền để bắt đầu lại không ạ?");
-    if (x == true) {
-      qTienPhong = 0;
-      qTienDien = 0;
-      qTienNuoc = 0;
-      qTienDichVu = 0;
-      qChiPhiKhac = 0;
-      tongTien = 0;
+            var tr4 = document.createElement("tr");
+            tr4.innerHTML =
+              "<td class='font-weight-bold text-success'>Tiền dịch vụ</td>" +
+              "<td class='text-success font-weight-bold'>" +
+              tDichVu.toLocaleString() +
+              " đ</td>" +
+              "<td>" +
+              nguoiThanhToan +
+              "</td>" +
+              "<td>" +
+              ngayThanhToan +
+              "</td>" +
+              "<td><span class='badge badge-secondary px-2 py-1'>" +
+              mssvBill +
+              "</span></td>";
+            if (cuoiMssv % 2 !== 0) {
+              bdy.prepend(tr4);
+            } else {
+              bdy.append(tr4);
+            }
+          }
 
-      document.getElementById('tkPhong').innerText = "0 đ";
-      document.getElementById('tkDien').innerText = "0 đ";
-      document.getElementById('tkNuoc').innerText = "0 đ";
-      document.getElementById('tkDichVu').innerText = "0 đ";
-      document.getElementById('tkKhac').innerText = "0 đ";
-      document.getElementById('tongTienDisplay').innerText = "0 đ";
-      document.getElementById('tableBody').innerHTML = "";
-      
-      alert("Dạ con đã chốt sổ và dọn dẹp sạch sẽ dữ liệu cũ rồi ạ!");
-    }
-  }
+          if (tKhac > 0) {
+            qChiPhiKhac = qChiPhiKhac + tKhac;
+            document.getElementById("tkKhac").innerText =
+              qChiPhiKhac.toLocaleString() + " đ";
+            tongTien = tongTien + tKhac;
 
-  var timeLeft = 60;
-  var timerId;
-  function startTimer() {
-    clearInterval(timerId);
-    timerId = setInterval(function() {
-      if (timeLeft > 0) {
-        timeLeft = timeLeft - 1;
-        document.getElementById("timer").value = timeLeft;
-      } else {
-        alert("Hết giờ!");
-        clearInterval(timerId);
+            var tr5 = document.createElement("tr");
+            tr5.innerHTML =
+              "<td class='font-weight-bold text-secondary'>Chi phí khác</td>" +
+              "<td class='text-success font-weight-bold'>" +
+              tKhac.toLocaleString() +
+              " đ</td>" +
+              "<td>" +
+              nguoiThanhToan +
+              "</td>" +
+              "<td>" +
+              ngayThanhToan +
+              "</td>" +
+              "<td><span class='badge badge-secondary px-2 py-1'>" +
+              mssvBill +
+              "</span></td>";
+            if (cuoiMssv % 2 !== 0) {
+              bdy.prepend(tr5);
+            } else {
+              bdy.append(tr5);
+            }
+          }
+
+          document.getElementById("tongTienDisplay").innerText =
+            tongTien.toLocaleString() + " đ";
+
+          if (tongTien > 1500000) {
+            alert("Cảnh báo: Quỹ phòng đã vượt định mức 1.5 triệu đồng!");
+          }
+
+          document.getElementById("billForm").reset();
+        });
+
+      function xoaDuLieu() {
+        var x = confirm(
+          "Bố Nam có chắc chắn muốn chốt sổ tháng này và xóa sạch toàn bộ lịch sử thu tiền để bắt đầu lại không ạ?",
+        );
+        if (x == true) {
+          qTienPhong = 0;
+          qTienDien = 0;
+          qTienNuoc = 0;
+          qTienDichVu = 0;
+          qChiPhiKhac = 0;
+          tongTien = 0;
+
+          document.getElementById("tkPhong").innerText = "0 đ";
+          document.getElementById("tkDien").innerText = "0 đ";
+          document.getElementById("tkNuoc").innerText = "0 đ";
+          document.getElementById("tkDichVu").innerText = "0 đ";
+          document.getElementById("tkKhac").innerText = "0 đ";
+          document.getElementById("tongTienDisplay").innerText = "0 đ";
+          document.getElementById("tableBody").innerHTML = "";
+
+          alert("Dạ con đã chốt sổ và dọn dẹp sạch sẽ dữ liệu cũ rồi ạ!");
+        }
       }
-    }, 1000); 
-  }
-</script>
-</body>
+
+      var timeLeft = 60;
+      var timerId;
+      function startTimer() {
+        clearInterval(timerId);
+        timerId = setInterval(function () {
+          if (timeLeft > 0) {
+            timeLeft = timeLeft - 1;
+            document.getElementById("timer").value = timeLeft;
+          } else {
+            alert("Hết giờ!");
+            clearInterval(timerId);
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
 </html>
